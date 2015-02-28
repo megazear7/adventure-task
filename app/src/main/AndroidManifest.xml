@@ -29,6 +29,18 @@
             android:name=".BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
+        <activity
+            android:name=".Discoveries"
+            android:label="@string/title_activity_discoveries" >
+        </activity>
+        <activity
+            android:name=".Quests"
+            android:label="@string/title_activity_quests" >
+        </activity>
+        <activity
+            android:name=".LevelUp"
+            android:label="@string/title_activity_level_up" >
+        </activity>
     </application>
 
 </manifest>

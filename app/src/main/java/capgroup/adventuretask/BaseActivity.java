@@ -29,11 +29,11 @@ public class BaseActivity extends ActionBarActivity {
         if (id == R.id.action_stats) {
             startActivity(new Intent(BaseActivity.this, Stats.class));
         } else if (id == R.id.action_discoveries) {
-            startActivity(new Intent(BaseActivity.this, MainActivity.class));
+            startActivity(new Intent(BaseActivity.this, Discoveries.class));
         } else if (id == R.id.action_quests) {
-            startActivity(new Intent(BaseActivity.this, MainActivity.class));
+            startActivity(new Intent(BaseActivity.this, Quests.class));
         } else if (id == R.id.action_level_up) {
-            startActivity(new Intent(BaseActivity.this, MainActivity.class));
+            startActivity(new Intent(BaseActivity.this, LevelUp.class));
         }
 
         return super.onOptionsItemSelected(item);

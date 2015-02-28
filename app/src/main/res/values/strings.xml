@@ -11,6 +11,8 @@
     <string name="action_discoveries">Discoveries</string>
     <string name="action_quests">Quests</string>
     <string name="action_level_up">Level Up</string>
-
+    <string name="title_activity_discoveries">Discoveries</string>
+    <string name="title_activity_quests">Quests</string>
+    <string name="title_activity_level_up">LevelUp</string>
 
 </resources>
