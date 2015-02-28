@@ -4,5 +4,13 @@
     <string name="app_name">AdventureTask</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_stats">Stats</string>
+    <string name="action_go_to_stats">Stats</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="action_stats">Stats</string>
+    <string name="action_discoveries">Discoveries</string>
+    <string name="action_quests">Quests</string>
+    <string name="action_level_up">Level Up</string>
+
 
 </resources>
