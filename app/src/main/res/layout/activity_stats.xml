@@ -1,12 +1,22 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="capgroup.adventuretask.Stats">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
     <TextView android:text="Stats Page" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-</RelativeLayout>
+    <TextView android:text="Name: TODO" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Level: TODO" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="EXP: TODO" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Strength: TODO" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Intelligence: TODO" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Charisma: TODO" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Stamina: TODO" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
