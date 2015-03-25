@@ -14,7 +14,7 @@ public class Stats extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        Character character = new Character();
+        Character character = new Character(getApplicationContext());
 
         TextView textView = (TextView) findViewById(R.id.character_name);
         textView.setText("Name: " + character.getName());

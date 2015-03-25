@@ -5,25 +5,25 @@
 
     <TextView android:text="Stats Page" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <TextView android:text="Name: TODO" android:layout_width="wrap_content"
+    <TextView android:text="Name:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_name" />
-    <TextView android:text="Level: TODO" android:layout_width="wrap_content"
+    <TextView android:text="Level:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_level" />
-    <TextView android:text="XP: TODO" android:layout_width="wrap_content"
+    <TextView android:text="XP:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_xp" />
-    <TextView android:text="Strength: TODO" android:layout_width="wrap_content"
+    <TextView android:text="Strength:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_strength" />
-    <TextView android:text="Intelligence: TODO" android:layout_width="wrap_content"
+    <TextView android:text="Intelligence:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_intelligence" />
-    <TextView android:text="Charisma: TODO" android:layout_width="wrap_content"
+    <TextView android:text="Charisma:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_charisma" />
-    <TextView android:text="Stamina: TODO" android:layout_width="wrap_content"
+    <TextView android:text="Stamina:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_stamina" />
 </LinearLayout>
