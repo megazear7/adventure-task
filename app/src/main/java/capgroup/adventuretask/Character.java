@@ -61,10 +61,10 @@ public class Character {
             this.intelligence = 9;
             this.charisma = 8;
             this.stamina = 7;
-            this.xp = 0;
+            this.xp = 1;
             this.currentLevel = 1;
 
-            updateStats();
+            updateFile();
         }
 
         // TODO build character from the json object located on disc.
@@ -74,14 +74,22 @@ public class Character {
     private int xpToLevel(int xp) {
         // TODO if someone would like to make a logarithmic level scale go ahead.
         // right now 100 xp equates to 1 level. Level 2 is gained at 100 xp.
-        return (int)Math.ceil(xp/100);
+        return ((int)Math.ceil(xp/100)) + 1;
+    }
+
+    public int xpToNextLevel() {
+        return (100 - (this.xp % 100));
+    }
+
+    public int xpFromLastLevel() {
+        return this.xp % 100;
     }
 
     /**
      * This is the level that should be shown to the user. This is based on the xp.
      * @return the characters actual level.
      */
-    public int actualLevel() {
+    public int getActualLevel() {
         return xpToLevel(xp);
     }
 
@@ -91,8 +99,6 @@ public class Character {
     }
 
     public void increaseLevel(){
-        // TODO make sure that currentLevel does not increase past what this.xp should allow based
-        // on the xp/level table
         currentLevel++;
         updateFile();
     }

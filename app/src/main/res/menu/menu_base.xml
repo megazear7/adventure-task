@@ -9,5 +9,7 @@
     <item android:id="@+id/action_quests" android:title="@string/action_quests"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_level_up" android:title="@string/action_level_up"
+    android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/admin" android:title="Admin"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

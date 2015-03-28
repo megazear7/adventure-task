@@ -41,6 +41,10 @@
             android:name=".LevelUp"
             android:label="@string/title_activity_level_up" >
         </activity>
+        <activity
+            android:name=".Admin"
+            android:label="@string/title_activity_admin" >
+        </activity>
     </application>
 
 </manifest>

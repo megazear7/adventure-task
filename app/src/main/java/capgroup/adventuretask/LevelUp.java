@@ -22,28 +22,42 @@ public class LevelUp extends BaseActivity {
         final Button incStr = (Button) findViewById(R.id.increase_strength);
         incStr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                character.increaseStrength(1);
+                if (character.getActualLevel() > character.getCurrentLevel()) {
+                    character.increaseStrength(1);
+                    character.increaseLevel();
+                }
             }
         });
 
         final Button incInt = (Button) findViewById(R.id.increase_intelligence);
         incInt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                character.increaseStrength(1);
+                if (character.getActualLevel() > character.getCurrentLevel()) {
+                    character.increaseIntelligence(1);
+                    character.increaseLevel();
+                }
             }
         });
 
         final Button incCha = (Button) findViewById(R.id.increase_charisma);
         incCha.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                character.increaseStrength(1);
+                if (character.getActualLevel() > character.getCurrentLevel()) {
+                    character.increaseCharisma(1);
+                    character.increaseLevel();
+                }
+
             }
         });
 
         final Button incSta = (Button) findViewById(R.id.increase_stamina);
         incSta.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                character.increaseStrength(1);
+                if (character.getActualLevel() > character.getCurrentLevel()) {
+                    character.increaseStamina(1);
+                    character.increaseLevel();
+                }
+
             }
         });
     }
