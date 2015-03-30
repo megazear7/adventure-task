@@ -26,6 +26,7 @@ public class Character {
     private int stamina;
     private int xp;
     private int currentLevel;
+    private int attributeBoostPoints;
     private File characterFile;
 
     /**
@@ -48,6 +49,7 @@ public class Character {
                 stamina = Integer.parseInt(reader.readLine());
                 xp = Integer.parseInt(reader.readLine());
                 currentLevel = Integer.parseInt(reader.readLine());
+                attributeBoostPoints = Integer.parseInt(reader.readLine());
 
                 reader.close();
                 fIn.close();
@@ -63,6 +65,7 @@ public class Character {
             this.stamina = 7;
             this.xp = 0;
             this.currentLevel = 1;
+            this.attributeBoostPoints = 0;
 
             updateStats();
         }
@@ -74,7 +77,11 @@ public class Character {
     private int xpToLevel(int xp) {
         // TODO if someone would like to make a logarithmic level scale go ahead.
         // right now 100 xp equates to 1 level. Level 2 is gained at 100 xp.
-        return (int)Math.ceil(xp/100);
+        //return (int)Math.ceil(xp/100);
+
+        //This new formula uses the current level of the character to scale the experience gain
+        return (int)Math.ceil((xp/(10*this.currentLevel)));
+
     }
 
     /**
@@ -93,7 +100,11 @@ public class Character {
     public void increaseLevel(){
         // TODO make sure that currentLevel does not increase past what this.xp should allow based
         // on the xp/level table
-        currentLevel++;
+        if(actualLevel()>currentLevel)
+        {
+            currentLevel++;
+            attributeBoostPoints=attributeBoostPoints+3;
+        }
         updateFile();
     }
 
@@ -104,12 +115,20 @@ public class Character {
     /**
      * This returns the current level of the character. That is, they might have enough xp to be
      * level 8, but if they have not yet leveled up then there current level will be 7 still. The
-     * user should always be displayed there actualy level, not there current level. This is used
+     * user should always be displayed their actual level, not their current level. This is used
      * so that we can determine if the user has leveled up yet or not, and how many levels they
-     * need to level up before they cathch back up with there xp.
+     * need to level up before they catch back up with their xp.
+     *
+     * After leveling up, the player is awarded 3 Attribute Boost Points. These points can be used
+     * on the level up screen to permanently increase 3 points of their choosing.
+     * Could be all 3 in STR, or 1 in STR and 2 in INT. Etc.
      */
     public int getCurrentLevel() {
         return currentLevel;
+    }
+
+    public int getAttributeBoostPoints() {
+        return attributeBoostPoints;
     }
 
     public String getName() {
@@ -156,8 +175,8 @@ public class Character {
         this.stamina += stamina;
         updateFile();
     }
-
-    private void updateStats() {
+//Changed to Public so Level Up can change live
+    public void updateStats() {
         try {
             FileInputStream fIn = new FileInputStream(characterFile);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fIn));
@@ -169,7 +188,7 @@ public class Character {
             stamina = Integer.parseInt(reader.readLine());
             xp = Integer.parseInt(reader.readLine());
             currentLevel = Integer.parseInt(reader.readLine());
-
+            attributeBoostPoints = Integer.parseInt(reader.readLine());
             reader.close();
             fIn.close();
         } catch(Exception e) {
@@ -195,6 +214,8 @@ public class Character {
             writer.write(Integer.toString(this.xp));
             writer.newLine();
             writer.write(Integer.toString(this.currentLevel));
+            writer.newLine();
+            writer.write(Integer.toString(this.attributeBoostPoints));
 
             writer.close();
             fOut.close();
