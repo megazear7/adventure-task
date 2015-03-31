@@ -22,7 +22,7 @@ public class Stats extends BaseActivity {
         textView.setText("Name: " + character.getName());
 
         textView = (TextView) findViewById(R.id.character_level);
-        textView.setText("LVL: " + Integer.toString(character.getCurrentLevel()));
+        textView.setText("LVL: " + Integer.toString(character.getActualLevel()));
 
         textView = (TextView) findViewById(R.id.character_strength);
         textView.setText("Strength: " + Integer.toString(character.getStrength()));

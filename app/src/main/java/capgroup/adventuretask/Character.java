@@ -180,8 +180,8 @@ public class Character {
         this.stamina += stamina;
         updateFile();
     }
-//Changed to Public so Level Up can change live
-    public void updateStats() {
+
+    private void updateStats() {
         try {
             FileInputStream fIn = new FileInputStream(characterFile);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fIn));
