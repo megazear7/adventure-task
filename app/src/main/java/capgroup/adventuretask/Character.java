@@ -58,19 +58,9 @@ public class Character {
             }
         }
         else {
-            this.name = "New Character";
-            this.strength = 10;
-            this.intelligence = 9;
-            this.charisma = 8;
-            this.stamina = 7;
-            this.xp = 1;
-            this.currentLevel = 1;
-            this.attributeBoostPoints = 0;
-
-            updateFile();
+            createNew();
         }
 
-        // TODO build character from the json object located on disc.
         updateStats();
     }
 
@@ -178,6 +168,19 @@ public class Character {
 
     public void increaseStamina(int stamina) {
         this.stamina += stamina;
+        updateFile();
+    }
+
+    public void createNew() {
+        this.name = "New Character";
+        this.strength = 10;
+        this.intelligence = 9;
+        this.charisma = 8;
+        this.stamina = 7;
+        this.xp = 1;
+        this.currentLevel = 1;
+        this.attributeBoostPoints = 0;
+
         updateFile();
     }
 

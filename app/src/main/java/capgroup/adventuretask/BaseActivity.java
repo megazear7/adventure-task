@@ -36,7 +36,9 @@ public class BaseActivity extends ActionBarActivity {
             startActivity(new Intent(BaseActivity.this, LevelUp.class));
         } else if (id == R.id.admin) {
             startActivity(new Intent(BaseActivity.this, Admin.class));
-        }
+        } else if (id == R.id.main) {
+        startActivity(new Intent(BaseActivity.this, MainActivity.class));
+    }
 
         return super.onOptionsItemSelected(item);
     }
