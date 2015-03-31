@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Button;
 
 
@@ -19,8 +20,8 @@ public class LevelUp extends BaseActivity {
 
         character = new Character(getApplicationContext());
 
-        final Button incStr = (Button) findViewById(R.id.increase_strength);
-        incStr.setOnClickListener(new View.OnClickListener() {
+        final Button STRInc = (Button) findViewById(R.id.STRInc);
+        STRInc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (character.getActualLevel() > character.getCurrentLevel()) {
                     character.increaseStrength(1);
@@ -29,7 +30,10 @@ public class LevelUp extends BaseActivity {
             }
         });
 
-        final Button incInt = (Button) findViewById(R.id.increase_intelligence);
+        TextView textView = (TextView) findViewById(R.id.STRDisp);
+        textView.setText(Integer.toString(character.getStrength()));
+
+        final Button incInt = (Button) findViewById(R.id.INTInc);
         incInt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (character.getActualLevel() > character.getCurrentLevel()) {
@@ -39,26 +43,38 @@ public class LevelUp extends BaseActivity {
             }
         });
 
-        final Button incCha = (Button) findViewById(R.id.increase_charisma);
+        textView = (TextView) findViewById(R.id.INTDisp);
+        textView.setText(Integer.toString(character.getIntelligence()));
+
+        final Button incCha = (Button) findViewById(R.id.CHAInc);
         incCha.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (character.getActualLevel() > character.getCurrentLevel()) {
                     character.increaseCharisma(1);
                     character.increaseLevel();
                 }
-
             }
         });
 
-        final Button incSta = (Button) findViewById(R.id.increase_stamina);
+        textView = (TextView) findViewById(R.id.CHADisp);
+        textView.setText(Integer.toString(character.getCharisma()));
+
+        final Button incSta = (Button) findViewById(R.id.STAInc);
         incSta.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (character.getActualLevel() > character.getCurrentLevel()) {
                     character.increaseStamina(1);
                     character.increaseLevel();
                 }
-
             }
         });
+
+        textView = (TextView) findViewById(R.id.STADisp);
+        textView.setText(Integer.toString(character.getStamina()));
     }
+
+
+
+
+
 }
