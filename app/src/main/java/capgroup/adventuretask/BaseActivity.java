@@ -54,7 +54,11 @@ public class BaseActivity extends ActionBarActivity implements
             startActivity(new Intent(BaseActivity.this, Quests.class));
         } else if (id == R.id.action_level_up) {
             startActivity(new Intent(BaseActivity.this, LevelUp.class));
-        }
+        } else if (id == R.id.admin) {
+            startActivity(new Intent(BaseActivity.this, Admin.class));
+        } else if (id == R.id.main) {
+        startActivity(new Intent(BaseActivity.this, MainActivity.class));
+    }
 
         return super.onOptionsItemSelected(item);
     }
