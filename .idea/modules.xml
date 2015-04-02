@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/adventure-task.iml" filepath="$PROJECT_DIR$/adventure-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AdventureTask.iml" filepath="$PROJECT_DIR$/AdventureTask.iml" />
       <module fileurl="file://$PROJECT_DIR$/MobileAppProj.iml" filepath="$PROJECT_DIR$/MobileAppProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adventure-task.iml" filepath="$PROJECT_DIR$/adventure-task.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
