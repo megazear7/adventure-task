@@ -5,6 +5,7 @@ import android.content.ContextWrapper;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -27,7 +28,10 @@ public class Character {
     private int xp;
     private int currentLevel;
     private int attributeBoostPoints;
+    //private List<Discovery>
     private File characterFile;
+
+    private static Context context;
 
     /**
      * Expect the character object to be created on disc before making a character
@@ -36,6 +40,7 @@ public class Character {
         // Create the character json file if it doesn't exist
         File externalStorageDir = Environment.getExternalStorageDirectory();
         characterFile = new File(context.getApplicationInfo().dataDir , "character.txt");
+        Character.context = context;
 
         if(characterFile.exists()) {
             try {
@@ -92,15 +97,16 @@ public class Character {
     }
 
     public void increaseLevel(){
-        currentLevel++;
         // TODO make sure that currentLevel does not increase past what this.xp should allow based
         // on the xp/level table
-        if(getActualLevel()>currentLevel)
+        while(getActualLevel()>currentLevel)
         {
             currentLevel++;
-            attributeBoostPoints=attributeBoostPoints+3;
+            increaseAttributeBoostPoints(3);
+            Log.d("DEBUG", "character.getAttributeBoostPoints() = " + getAttributeBoostPoints());
         }
         updateFile();
+
     }
 
     public int getXp() {
@@ -124,6 +130,11 @@ public class Character {
 
     public int getAttributeBoostPoints() {
         return attributeBoostPoints;
+    }
+
+    public void increaseAttributeBoostPoints(int attributeBoostPoints) {
+        this.attributeBoostPoints += attributeBoostPoints;
+        updateFile();
     }
 
     public String getName() {
@@ -189,6 +200,8 @@ public class Character {
             FileInputStream fIn = new FileInputStream(characterFile);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fIn));
 
+
+
             name = reader.readLine();
             strength = Integer.parseInt(reader.readLine());
             intelligence = Integer.parseInt(reader.readLine());
@@ -230,6 +243,14 @@ public class Character {
         } catch (Exception e) {
 
         }
+    }
+
+    public static Character getCharacter() {
+        return new Character(context);
+    }
+
+    public static void setContext(Context context) {
+        Character.context = context;
     }
 
 }
