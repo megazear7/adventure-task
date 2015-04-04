@@ -22,7 +22,6 @@ public class LevelUp extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         character = new Character(getApplicationContext());
-
         character.increaseLevel();
 
         if (character.getAttributeBoostPoints()>0) {
@@ -38,6 +37,7 @@ public class LevelUp extends BaseActivity {
 
             final TextView ATTView= (TextView) findViewById(R.id.ATTDisp);
             ATTView.setText("Remaining Attribute Points: " + Integer.toString(character.getAttributeBoostPoints()));
+
 
             final TextView STRView = (TextView) findViewById(R.id.STRDisp);
             STRView.setText(Integer.toString(character.getStrength()));
@@ -164,9 +164,6 @@ public class LevelUp extends BaseActivity {
                     }
                 }
             });
-
-
-
         } else {
             setContentView(R.layout.activity_cant_level_up);
         }

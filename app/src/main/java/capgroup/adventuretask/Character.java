@@ -28,7 +28,10 @@ public class Character {
     private int xp;
     private int currentLevel;
     private int attributeBoostPoints;
+    //private List<Discovery>
     private File characterFile;
+
+    private static Context context;
 
     /**
      * Expect the character object to be created on disc before making a character
@@ -37,6 +40,7 @@ public class Character {
         // Create the character json file if it doesn't exist
         File externalStorageDir = Environment.getExternalStorageDirectory();
         characterFile = new File(context.getApplicationInfo().dataDir , "character.txt");
+        Character.context = context;
 
         if(characterFile.exists()) {
             try {
@@ -93,8 +97,6 @@ public class Character {
     }
 
     public void increaseLevel(){
-
-
         // TODO make sure that currentLevel does not increase past what this.xp should allow based
         // on the xp/level table
         while(getActualLevel()>currentLevel)
@@ -180,7 +182,6 @@ public class Character {
         updateFile();
     }
 
-
     public void createNew() {
         this.name = "New Character";
         this.strength = 10;
@@ -242,6 +243,14 @@ public class Character {
         } catch (Exception e) {
 
         }
+    }
+
+    public static Character getCharacter() {
+        return new Character(context);
+    }
+
+    public static void setContext(Context context) {
+        Character.context = context;
     }
 
 }
