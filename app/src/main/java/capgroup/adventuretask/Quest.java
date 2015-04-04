@@ -51,6 +51,10 @@ public class Quest {
         quests = new ArrayList<Quest>(10);
         quests.add(new Quest(new String("Dreese Labs"), 5, 0, 0, 2, 0, 40.002322, -83.016016, 20));
         quests.add(new Quest(new String("Caldwell Labs"), 3, 0, 3, 0, 0, 40.002405, -83.015003, 25));
+        quests.add(new Quest(new String("Ohio Union"), 10, 1, 0, 0, 5, 39.998192, -83.008644, 40));
+        quests.add(new Quest(new String("RPAC"), 6, 7, 3, 0, 1, 39.999702, -83.017881, 45));
+        quests.add(new Quest(new String("Thompson Library"), 8, 0, 2, 9, 0, 39.999305, -83.014845, 30));
+        quests.add(new Quest(new String("Library Formerly Known As SEL"), 5, 0, 0, 7, 2, 40.001666, -83.013364, 20));
 
         for (int i = 0; i < quests.size(); i++) {
             quests.get(i).id = i;
