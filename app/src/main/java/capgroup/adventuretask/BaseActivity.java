@@ -8,8 +8,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import android.location.Location;
 
-public class BaseActivity extends ActionBarActivity {
+
+public class BaseActivity extends ActionBarActivity implements
+        ConnectionCallbacks, OnConnectionFailedListener {
+    GoogleApiClient mClient;
+    Location mLastLocation;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API).build();
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,8 +54,27 @@ public class BaseActivity extends ActionBarActivity {
             startActivity(new Intent(BaseActivity.this, Quests.class));
         } else if (id == R.id.action_level_up) {
             startActivity(new Intent(BaseActivity.this, LevelUp.class));
-        }
+        } else if (id == R.id.admin) {
+            startActivity(new Intent(BaseActivity.this, Admin.class));
+        } else if (id == R.id.main) {
+        startActivity(new Intent(BaseActivity.this, MainActivity.class));
+    }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onConnectionSuspended(int status) {
+
+    }
+
+    public void onConnected(Bundle bundle) {
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mClient);
+        if (mLastLocation != null) {
+
+        }
+    }
+
+    public void onConnectionFailed(ConnectionResult result) {
+
     }
 }

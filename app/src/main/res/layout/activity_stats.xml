@@ -14,6 +14,11 @@
     <TextView android:text="XP:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_xp" />
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/xp_progress"
+        style="@android:style/Widget.ProgressBar.Horizontal" />
     <TextView android:text="Strength:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_strength" />
@@ -26,4 +31,11 @@
     <TextView android:text="Stamina:" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_stamina" />
+
+    <TextView
+        android:text="Attribute Points:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/character_attribute_points" />
+
 </LinearLayout>

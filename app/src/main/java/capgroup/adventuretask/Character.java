@@ -5,6 +5,7 @@ import android.content.ContextWrapper;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -58,37 +59,31 @@ public class Character {
             }
         }
         else {
-            this.name = "New Character";
-            this.strength = 10;
-            this.intelligence = 9;
-            this.charisma = 8;
-            this.stamina = 7;
-            this.xp = 0;
-            this.currentLevel = 1;
-            this.attributeBoostPoints = 0;
-
-            updateStats();
+            createNew();
         }
 
-        // TODO build character from the json object located on disc.
         updateStats();
     }
 
     private int xpToLevel(int xp) {
         // TODO if someone would like to make a logarithmic level scale go ahead.
         // right now 100 xp equates to 1 level. Level 2 is gained at 100 xp.
-        //return (int)Math.ceil(xp/100);
+        return ((int)Math.ceil(xp/100)) + 1;
+    }
 
-        //This new formula uses the current level of the character to scale the experience gain
-        return (int)Math.ceil((xp/(10*this.currentLevel)));
+    public int xpToNextLevel() {
+        return (100 - (this.xp % 100));
+    }
 
+    public int xpFromLastLevel() {
+        return this.xp % 100;
     }
 
     /**
      * This is the level that should be shown to the user. This is based on the xp.
      * @return the characters actual level.
      */
-    public int actualLevel() {
+    public int getActualLevel() {
         return xpToLevel(xp);
     }
 
@@ -98,14 +93,18 @@ public class Character {
     }
 
     public void increaseLevel(){
+
+
         // TODO make sure that currentLevel does not increase past what this.xp should allow based
         // on the xp/level table
-        if(actualLevel()>currentLevel)
+        while(getActualLevel()>currentLevel)
         {
             currentLevel++;
-            attributeBoostPoints=attributeBoostPoints+3;
+            increaseAttributeBoostPoints(3);
+            Log.d("DEBUG", "character.getAttributeBoostPoints() = " + getAttributeBoostPoints());
         }
         updateFile();
+
     }
 
     public int getXp() {
@@ -129,6 +128,11 @@ public class Character {
 
     public int getAttributeBoostPoints() {
         return attributeBoostPoints;
+    }
+
+    public void increaseAttributeBoostPoints(int attributeBoostPoints) {
+        this.attributeBoostPoints += attributeBoostPoints;
+        updateFile();
     }
 
     public String getName() {
@@ -175,11 +179,27 @@ public class Character {
         this.stamina += stamina;
         updateFile();
     }
-//Changed to Public so Level Up can change live
-    public void updateStats() {
+
+
+    public void createNew() {
+        this.name = "New Character";
+        this.strength = 10;
+        this.intelligence = 9;
+        this.charisma = 8;
+        this.stamina = 7;
+        this.xp = 1;
+        this.currentLevel = 1;
+        this.attributeBoostPoints = 0;
+
+        updateFile();
+    }
+
+    private void updateStats() {
         try {
             FileInputStream fIn = new FileInputStream(characterFile);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fIn));
+
+
 
             name = reader.readLine();
             strength = Integer.parseInt(reader.readLine());
