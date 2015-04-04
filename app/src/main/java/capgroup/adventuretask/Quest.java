@@ -35,7 +35,7 @@ public class Quest {
     }
 
     public String toString() {
-        return name + "\n XP+" + experience + "STR+" + strength + " END+" + endurance + " INT+" + intelligence + " CHA+"
+        return name + "\n XP+" + experience + " STR+" + strength + " END+" + endurance + " INT+" + intelligence + " CHA+"
                 + charisma;
     }
 
