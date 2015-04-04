@@ -21,8 +21,7 @@ public class MainActivity extends BaseActivity {
         newGame.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Character character = new Character(getApplicationContext());
-                character.createNew();
-                startActivity(new Intent(MainActivity.this, Stats.class));
+                startActivity(new Intent(MainActivity.this, Creation.class));
             }
         });
 

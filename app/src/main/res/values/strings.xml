@@ -15,5 +15,6 @@
     <string name="title_activity_quests">Quests</string>
     <string name="title_activity_level_up">LevelUp</string>
     <string name="title_activity_admin">Admin</string>
+    <string name="title_activity_creation">Creation</string>
 
 </resources>

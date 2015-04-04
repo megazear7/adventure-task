@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="capgroup.adventuretask" >
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -46,7 +47,13 @@
             android:name=".Admin"
             android:label="@string/title_activity_admin" >
         </activity>
-        <service android:name=".GeofenceTransitionsIntentService"/>
+
+        <service android:name=".GeofenceTransitionsIntentService" />
+
+        <activity
+            android:name=".Creation"
+            android:label="@string/title_activity_creation" >
+        </activity>
     </application>
 
 </manifest>

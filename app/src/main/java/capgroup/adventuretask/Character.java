@@ -58,7 +58,7 @@ public class Character {
             }
         }
         else {
-            createNew();
+            createNew(10, 10, 10, 10);
         }
 
         updateStats();
@@ -171,12 +171,12 @@ public class Character {
         updateFile();
     }
 
-    public void createNew() {
+    public void createNew(int str, int intel, int cha, int sta) {
         this.name = "New Character";
-        this.strength = 10;
-        this.intelligence = 9;
-        this.charisma = 8;
-        this.stamina = 7;
+        this.strength = str;
+        this.intelligence = intel;
+        this.charisma = cha;
+        this.stamina = sta;
         this.xp = 1;
         this.currentLevel = 1;
         this.attributeBoostPoints = 0;
