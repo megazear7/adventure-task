@@ -35,7 +35,7 @@ public class Quest {
     }
 
     public String toString() {
-        return name + "\n STR+" + strength + " END+" + endurance + " INT+" + intelligence + " CHA+"
+        return name + "\n XP+" + experience + "STR+" + strength + " END+" + endurance + " INT+" + intelligence + " CHA+"
                 + charisma;
     }
 
@@ -64,5 +64,13 @@ public class Quest {
             }
         }
         return null;
+    }
+
+    public static String getPrintableQuests() {
+        StringBuilder result = new StringBuilder("");
+        for (Quest quest : quests()) {
+            result.append(quest.toString() + "\n\n");
+        }
+        return result.toString();
     }
 }

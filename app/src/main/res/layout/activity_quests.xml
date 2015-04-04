@@ -6,10 +6,7 @@
     <TextView android:text="Quests" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <TextView android:text="Thompson Library: +4 intelligence, +2 charisma" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView android:text="RPAC: +4 strength" android:layout_width="wrap_content"
+    <TextView android:text="Default text" android:id="@+id/main" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 </LinearLayout>
