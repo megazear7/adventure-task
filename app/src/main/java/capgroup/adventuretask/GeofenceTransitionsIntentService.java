@@ -27,11 +27,8 @@ public class GeofenceTransitionsIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         GeofencingEvent geofencingEvent = GeofencingEvent.fromIntent(intent);
-        Log.d("DEBUG", "Handling geofence transition");
         if (geofencingEvent.hasError()) {
-            // String errorMessage = GeofenceErrorMessages.getErrorString(this, geofencingEvent.getErrorCode());
-            // Log.e(.TAG, "Geofencing error");
-            // TODO Log errors
+            Log.e("ERROR", "Geofence event has error.");
             return;
         }
 
@@ -41,13 +38,12 @@ public class GeofenceTransitionsIntentService extends IntentService {
             List<Geofence> triggeringGeofences = geofencingEvent.getTriggeringGeofences();
 
             for (Geofence geofence : triggeringGeofences) {
-
                 // Send notification and log the transition details.
                 Quest quest = Quest.quests().get(Integer.parseInt(geofence.getRequestId().replaceAll("\\D+", "")));
                 sendNotification("Quest Complete!", "Completed quest \"" + quest.name + "\"");
+
                 // TODO Check date
                 if (true) {
-                    Log.d("DEBUG", "Geofence triggered, dispensing rewards.");
                     Character character = Character.getCharacter();
                     character.increaseStrength(quest.strength);
                     character.increaseStamina(quest.endurance);
@@ -59,13 +55,10 @@ public class GeofenceTransitionsIntentService extends IntentService {
         }
         else {
             Log.e("ERROR", "Geofence transition error.");
-            // TODO Log transition errors
         }
     }
 
     protected void sendNotification(String s, String details) {
-        // TODO Implement notifications
-        Log.d("DEBUG", "Notification should be sending.");
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.abc_spinner_mtrl_am_alpha)
                 .setContentTitle(s)

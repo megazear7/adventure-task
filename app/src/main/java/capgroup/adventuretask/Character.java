@@ -37,7 +37,7 @@ public class Character {
      * Expect the character object to be created on disc before making a character
      */
     public Character(Context context) {
-        // Create the character json file if it doesn't exist
+        // This creates the character json file if it doesn't exist
         File externalStorageDir = Environment.getExternalStorageDirectory();
         characterFile = new File(context.getApplicationInfo().dataDir , "character.txt");
         Character.context = context;
@@ -70,8 +70,6 @@ public class Character {
     }
 
     private int xpToLevel(int xp) {
-        // TODO if someone would like to make a logarithmic level scale go ahead.
-        // right now 100 xp equates to 1 level. Level 2 is gained at 100 xp.
         return ((int)Math.ceil(xp/100)) + 1;
     }
 
@@ -103,7 +101,6 @@ public class Character {
         {
             currentLevel++;
             increaseAttributeBoostPoints(3);
-            Log.d("DEBUG", "character.getAttributeBoostPoints() = " + getAttributeBoostPoints());
         }
         updateFile();
 
@@ -182,6 +179,14 @@ public class Character {
         updateFile();
     }
 
+    /**
+     * This overrides the character json file with the stats given. Resetting the name, xp, current
+     * level, and attribute boost points.
+     * @param str   the new characters strength
+     * @param intel the new character intelligence
+     * @param cha   the new characters charisma
+     * @param sta   the new characters stamina
+     */
     public void createNew(int str, int intel, int cha, int sta) {
         this.name = "New Character";
         this.strength = str;
@@ -195,13 +200,15 @@ public class Character {
         updateFile();
     }
 
+    /**
+     * This will update this character objects stats based on what is in the character file.
+     */
     private void updateStats() {
         try {
             FileInputStream fIn = new FileInputStream(characterFile);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fIn));
 
-
-
+            /* Read from the file in the expected order. */
             name = reader.readLine();
             strength = Integer.parseInt(reader.readLine());
             intelligence = Integer.parseInt(reader.readLine());
@@ -210,6 +217,7 @@ public class Character {
             xp = Integer.parseInt(reader.readLine());
             currentLevel = Integer.parseInt(reader.readLine());
             attributeBoostPoints = Integer.parseInt(reader.readLine());
+
             reader.close();
             fIn.close();
         } catch(Exception e) {
@@ -217,11 +225,15 @@ public class Character {
         }
     }
 
+    /**
+     * This will update the character json file with this character objects current stats.
+     */
     private void updateFile() {
         try {
             FileOutputStream fOut = new FileOutputStream(characterFile);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fOut));
 
+            /* Write the stats in the expected order. */
             writer.write(this.name);
             writer.newLine();
             writer.write(Integer.toString(this.strength));
@@ -245,6 +257,11 @@ public class Character {
         }
     }
 
+    /**
+     * This requires either that a character has already been made or the setContext method has been
+     * used so that the apps data directory can be found.
+     * @return
+     */
     public static Character getCharacter() {
         return new Character(context);
     }

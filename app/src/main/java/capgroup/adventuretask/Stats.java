@@ -44,11 +44,5 @@ public class Stats extends BaseActivity {
         ProgressBar xpProgress = (ProgressBar) findViewById(R.id.xp_progress);
         xpProgress.setMax(character.xpFromLastLevel() + character.xpToNextLevel());
         xpProgress.setProgress(character.xpToNextLevel());
-        Log.d("DEBUG", "character.getCurrentLevel() = " + character.getCurrentLevel());
-        Log.d("DEBUG", "character.getActualLevel() = " + character.getActualLevel());
-        Log.d("DEBUG", "character.getXp() = " + character.getXp());
-        Log.d("DEBUG", "character.xpToNextLevel() = " + character.xpToNextLevel());
-        Log.d("DEBUG", "character.xpFromLastLevel() = " + character.xpFromLastLevel());
-        Log.d("DEBUG", "character.getAttributeBoostPoints() = " + character.getAttributeBoostPoints());
     }
 }

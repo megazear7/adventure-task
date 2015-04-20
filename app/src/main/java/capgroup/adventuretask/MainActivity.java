@@ -77,11 +77,5 @@ public class MainActivity extends BaseActivity implements ConnectionCallbacks, O
     @Override
     public void onConnected(Bundle connectionHint) {
         LocationServices.GeofencingApi.addGeofences(mClient, getGeofences(), getGeofencePendingIntent());
-        Log.d("DEBUG", "Location services API connected!");
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        Log.d("DEBUG", result.toString());
     }
 }

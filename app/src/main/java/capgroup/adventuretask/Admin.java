@@ -15,6 +15,7 @@ public class Admin extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        // Create the character object from the saved data
         final Character character = new Character(getApplicationContext());
 
         final Button add1 = (Button) findViewById(R.id.add_1_xp);
